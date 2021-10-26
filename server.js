@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 require('./model/db-config');
@@ -8,27 +7,19 @@ const bodyParser = require('body-parser')
 // import de ObjectId pour faire le put
 const ObjectID = require('mongoose').Types.ObjectId;
 
-/*
-require = ('dotenv').config();
 
-const config_app = {
-    host: process.env.APP_HOST,
-    port: process.env.APP_PORT
-}
+require('dotenv').config();
+require('./index')
 
-const config_db = {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    nom: process.env.DB_NOM,
-	prenom: process.env.DB_PRENOM
-}
-console.log(config_app, config_db);
-*/
-
+// un middleware
 app.use('/', bodyParser.json());
+
+// execution de app sur le port 8080
 app.listen(8080, (err) => {
     !err ? console.log(`server starting`) : console.log(`error server: ${err}`)
 })
+
+
 
 //obtenir les donnees
 app.get('/', (req, res) => {
