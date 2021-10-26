@@ -4,25 +4,26 @@ const app = express();
 require('./model/db-config');
 const PostModel = require('./model/user');
 const bodyParser = require('body-parser')
-require('dotenv').config();
+
 // import de ObjectId pour faire le put
 const ObjectID = require('mongoose').Types.ObjectId;
-const db = require('db')
-require("./config/.env");
 
-app.connect({
+/*
+require = ('dotenv').config();
+
+const config_app = {
     host: process.env.APP_HOST,
     port: process.env.APP_PORT
-})
+}
 
-db.connect({
+const config_db = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     nom: process.env.DB_NOM,
 	prenom: process.env.DB_PRENOM
-})
-console.log(app, db);
-
+}
+console.log(config_app, config_db);
+*/
 
 app.use('/', bodyParser.json());
 app.listen(8080, (err) => {
