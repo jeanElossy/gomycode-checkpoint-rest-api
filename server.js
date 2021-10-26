@@ -1,16 +1,30 @@
-//require('dotenv').config();
+
 const express = require('express');
-const { db } = require('./model/user');
 const app = express();
 require('./model/db-config');
 const PostModel = require('./model/user');
 const bodyParser = require('body-parser')
-
+require('dotenv').config();
 // import de ObjectId pour faire le put
 const ObjectID = require('mongoose').Types.ObjectId;
+const db = require('db')
+require("./config/.env");
+
+app.connect({
+    host: process.env.APP_HOST,
+    port: process.env.APP_PORT
+})
+
+db.connect({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    nom: process.env.DB_NOM,
+	prenom: process.env.DB_PRENOM
+})
+console.log(app, db);
+
 
 app.use('/', bodyParser.json());
-
 app.listen(8080, (err) => {
     !err ? console.log(`server starting`) : console.log(`error server: ${err}`)
 })
@@ -94,4 +108,5 @@ app.delete('/:id', (req, res) => {
 		});
 	}
 });
+
 
