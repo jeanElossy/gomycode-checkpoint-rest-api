@@ -1,3 +1,5 @@
+// require("./config/env")
+
 const config_app = {
     host: process.env.APP_HOST,
     port: process.env.APP_PORT
